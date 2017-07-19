@@ -1,0 +1,29 @@
+.inner-flame {
+  width: 25px;
+  height: 40px;
+  background: red;
+  border-radius: 100% 0% 80% 30%;
+  transform: rotate(5deg);
+  position: absolute;
+  right: 13px;
+  top: 19px;
+}
+
+.outer-flame {
+  width: 40px;
+  height: 60px;
+  background: orange;
+  border-radius: 90% 0% 70% 20%;
+  transform: rotate(-30deg);
+}
+
+.stick {
+  width: 10px;
+  height: 120px;
+  border-top: 15px solid #000;
+  border-radius: 15%;
+  background: #E1CEA7;
+  position: relative;
+  bottom: 15px;
+  left: 15px;
+}

@@ -1,7 +1,19 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import Home from 'components/home/home';
+import { AppContainer } from 'react-hot-loader';
+import Home from 'components/home';
 
 const app = document.getElementById('app');
-const HomeContainer = () => <div><Home /></div>
-render(<HomeContainer />, app);
+render(<AppContainer><Home /></AppContainer>, app);
+
+if ((module as any).hot) {
+	(module as any).hot.accept('./components/home', () => {
+		const HomeContainer = require('./components/home').default;
+		render(
+			<AppContainer>
+				<HomeContainer />
+			</AppContainer>,
+			app
+		);
+	});
+}

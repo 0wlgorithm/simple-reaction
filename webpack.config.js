@@ -4,14 +4,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-cheap-source-emap',
-    entry: path.resolve('./src/index.tsx'),
+    entry: [
+        'react-hot-loader/patch',
+		'webpack-dev-server/client?http://localhost:8080',
+		'webpack/hot/only-dev-server',
+        path.resolve('./src/index.tsx'),
+    ],
     output: {
         path: path.resolve('./dist'),
         publicPath: '/',
         filename: '[name].bundle.js'
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: path.resolve('./src/index.html') })
+        new HtmlWebpackPlugin({ template: path.resolve('./src/index.html') }),
+        new webpack.HotModuleReplacementPlugin(),
+		new webpack.NamedModulesPlugin(),
     ],
     module: {
         rules: [
@@ -24,9 +31,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                include: [
-                    path.join(__dirname, 'src')
-                ],
+                include: __dirname + './src',
                 loaders: [
                     'style-loader',
                     'css-loader',
@@ -35,9 +40,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                exclude: [
-                    path.join(__dirname, 'src')
-                ],
+                exclude: __dirname + './src',
                 loaders: [
                     'style-loader',
                     {
