@@ -21,6 +21,35 @@ module.exports = {
                     'babel-loader',
                     'awesome-typescript-loader'
                 ]
+            },
+            {
+                test: /\.css$/,
+                include: [
+                    path.join(__dirname, 'src')
+                ],
+                loaders: [
+                    'style-loader',
+                    'css-loader',
+                    'postcss-loader',
+                ]
+            },
+            {
+                test: /\.css$/,
+                exclude: [
+                    path.join(__dirname, 'src')
+                ],
+                loaders: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                            localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+                        },
+                    },
+                    'postcss-loader',
+                ]
             }
         ]
     },

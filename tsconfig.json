@@ -5,8 +5,9 @@
         "strictNullChecks": true,
         "module": "commonjs",
         "jsx": "preserve",
-        "noUnusedLocals": true,
-        "baseUrl": "src"
+        "noUnusedLocals": false,
+        "baseUrl": "src",
+        "experimentalDecorators": true
     },
     "exclude": [
         "node_modules",
